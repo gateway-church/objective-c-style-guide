@@ -54,15 +54,17 @@ UIApplication.sharedApplication.delegate;
 ## Spacing
 
 * Indent using 4 spaces. Never indent with tabs. Be sure to set this preference in Xcode.
-* Method braces and other braces (`if`/`else`/`switch`/`while` etc.) always open on the same line as the statement but close on a new line.
+* Method braces and other braces (`if`/`else`/`switch`/`while` etc.) always open on the next line after the statement and close on a new line.
 
 **For example:**
 ```objc
-if (user.isHappy) {
-//Do something
+if (user.isHappy) 
+{
+    //Do something
 }
-else {
-//Do something else
+else 
+{
+    //Do something else
 }
 ```
 * There should be exactly one blank line between methods to aid in visual clarity and organization. Whitespace within methods should separate functionality, but often there should probably be new methods.
@@ -74,7 +76,8 @@ Conditional bodies should always use braces even when a conditional body could b
 
 **For example:**
 ```objc
-if (!error) {
+if (!error) 
+{
     return success;
 }
 ```
@@ -111,17 +114,19 @@ When methods return an error parameter by reference, switch on the returned valu
 
 **For example:**
 ```objc
-NSError *error;
-if (![self trySomethingWithError:&error]) {
+NSError* error;
+if (![self trySomethingWithError:&error]) 
+{
     // Handle Error
 }
 ```
 
 **Not:**
 ```objc
-NSError *error;
+NSError* error;
 [self trySomethingWithError:&error];
-if (error) {
+if (error) 
+{
     // Handle Error
 }
 ```
@@ -134,13 +139,13 @@ In method signatures, there should be a space after the scope (-/+ symbol). Ther
 
 **For Example**:
 ```objc
-- (void)setExampleText:(NSString *)text image:(UIImage *)image;
+- (void)setExampleText:(NSString*)text image:(UIImage*)image;
 ```
 ## Variables
 
 Variables should be named as descriptively as possible. Single letter variable names should be avoided except in `for()` loops.
 
-Asterisks indicating pointers belong with the variable, e.g., `NSString *text` not `NSString* text` or `NSString * text`, except in the case of constants.
+Asterisks indicating pointers belong with the type, e.g., `NSString* text` not `NSString *text` or `NSString * text`, even in the case of constants.
 
 Property definitions should be used in place of naked instance variables whenever possible. Direct instance variable access should be avoided except in initializer methods (`init`, `initWithCoder:`, etc…), `dealloc` methods and within custom setters and getters. For more information on using Accessor Methods in Initializer Methods and dealloc, see [here](https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/MemoryMgmt/Articles/mmPractical.html#//apple_ref/doc/uid/TP40004447-SW6).
 
@@ -149,7 +154,7 @@ Property definitions should be used in place of naked instance variables wheneve
 ```objc
 @interface NYTSection: NSObject
 
-@property (nonatomic) NSString *headline;
+@property (nonatomic) NSString* headline;
 
 @end
 ```
@@ -157,8 +162,9 @@ Property definitions should be used in place of naked instance variables wheneve
 **Not:**
 
 ```objc
-@interface NYTSection : NSObject {
-    NSString *headline;
+@interface NYTSection : NSObject 
+{
+    NSString* headline;
 }
 ```
 
@@ -171,13 +177,13 @@ Long, descriptive method and variable names are good.
 **For example:**
 
 ```objc
-UIButton *settingsButton;
+UIButton* settingsButton;
 ```
 
 **Not**
 
 ```objc
-UIButton *setBut;
+UIButton* setBut;
 ```
 
 A three letter prefix (e.g. `NYT`) should always be used for class names and constants, however may be omitted for Core Data entity names. Constants should be camel-case with all words capitalized and prefixed by the related class name for clarity.
@@ -223,9 +229,11 @@ Block comments should generally be avoided, as code should be as self-documentin
 `init` methods should be structured like this:
 
 ```objc
-- (instancetype)init {
+- (instancetype)init 
+{
     self = [super init]; // or call the designated initalizer
-    if (self) {
+    if (self) 
+    {
         // Custom initialization
     }
 
@@ -240,19 +248,19 @@ Block comments should generally be avoided, as code should be as self-documentin
 **For example:**
 
 ```objc
-NSArray *names = @[@"Brian", @"Matt", @"Chris", @"Alex", @"Steve", @"Paul"];
-NSDictionary *productManagers = @{@"iPhone" : @"Kate", @"iPad" : @"Kamal", @"Mobile Web" : @"Bill"};
-NSNumber *shouldUseLiterals = @YES;
-NSNumber *buildingZIPCode = @10018;
+NSArray* names = @[@"Brian", @"Matt", @"Chris", @"Alex", @"Steve", @"Paul"];
+NSDictionary* productManagers = @{@"iPhone" : @"Kate", @"iPad" : @"Kamal", @"Mobile Web" : @"Bill"};
+NSNumber* shouldUseLiterals = @YES;
+NSNumber* buildingZIPCode = @10018;
 ```
 
 **Not:**
 
 ```objc
-NSArray *names = [NSArray arrayWithObjects:@"Brian", @"Matt", @"Chris", @"Alex", @"Steve", @"Paul", nil];
-NSDictionary *productManagers = [NSDictionary dictionaryWithObjectsAndKeys: @"Kate", @"iPhone", @"Kamal", @"iPad", @"Bill", @"Mobile Web", nil];
-NSNumber *shouldUseLiterals = [NSNumber numberWithBool:YES];
-NSNumber *buildingZIPCode = [NSNumber numberWithInteger:10018];
+NSArray* names = [NSArray arrayWithObjects:@"Brian", @"Matt", @"Chris", @"Alex", @"Steve", @"Paul", nil];
+NSDictionary* productManagers = [NSDictionary dictionaryWithObjectsAndKeys: @"Kate", @"iPhone", @"Kamal", @"iPad", @"Bill", @"Mobile Web", nil];
+NSNumber* shouldUseLiterals = [NSNumber numberWithBool:YES];
+NSNumber* buildingZIPCode = [NSNumber numberWithInteger:10018];
 ```
 
 ## CGRect Functions
@@ -290,7 +298,7 @@ Constants are preferred over in-line string literals or numbers, as they allow f
 **For example:**
 
 ```objc
-static NSString * const NYTAboutViewControllerCompanyName = @"The New York Times Company";
+static NSString* const NYTAboutViewControllerCompanyName = @"The New York Times Company";
 
 static const CGFloat NYTImageThumbnailHeight = 50.0;
 ```
@@ -310,7 +318,8 @@ When using `enum`s, it is recommended to use the new fixed underlying type speci
 **Example:**
 
 ```objc
-typedef NS_ENUM(NSInteger, NYTAdRequestState) {
+typedef NS_ENUM(NSInteger, NYTAdRequestState) 
+{
     NYTAdRequestStateInactive,
     NYTAdRequestStateLoading
 };
@@ -325,9 +334,9 @@ Private properties should be declared in class extensions (anonymous categories)
 ```objc
 @interface NYTAdvertisement ()
 
-@property (nonatomic, strong) GADBannerView *googleAdView;
-@property (nonatomic, strong) ADBannerView *iAdView;
-@property (nonatomic, strong) UIWebView *adXWebView;
+@property (nonatomic, strong) GADBannerView* googleAdView;
+@property (nonatomic, strong) ADBannerView* iAdView;
+@property (nonatomic, strong) UIWebView* adXWebView;
 
 @end
 ```
@@ -352,14 +361,16 @@ This allows for more consistency across files and greater visual clarity.
 **For example:**
 
 ```objc
-if (!someObject) {
+if (!someObject) 
+{
 }
 ```
 
 **Not:**
 
 ```objc
-if (someObject == nil) {
+if (someObject == nil) 
+{
 }
 ```
 
@@ -392,13 +403,15 @@ Text and example taken from the [Cocoa Naming Guidelines](https://developer.appl
 
 Singleton objects should use a thread-safe pattern for creating their shared instance.
 ```objc
-+ (instancetype)sharedInstance {
++ (instancetype)sharedInstance 
+{
    static id sharedInstance = nil;
 
    static dispatch_once_t onceToken;
-   dispatch_once(&onceToken, ^{
-      sharedInstance = [[self alloc] init];
-   });
+   dispatch_once(&onceToken, ^
+    {
+       sharedInstance = [[self alloc] init];
+    });
 
    return sharedInstance;
 }
