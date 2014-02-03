@@ -1,8 +1,8 @@
-# NYTimes Objective-C Style Guide
+# Gateway Technology Objective-C Style Guide
 
-This style guide outlines the coding conventions of the iOS team at The New York Times. We welcome your feedback in [issues](https://github.com/NYTimes/objetive-c-style-guide/issues), [pull requests](https://github.com/NYTimes/objetive-c-style-guide/pulls) and [tweets](https://twitter.com/nytimesmobile). Also, [we're hiring](http://jobs.nytco.com/job/New-York-iOS-Developer-Job-NY/2572221/).
+This style guide outlines the coding conventions of the iOS team at Gateway Technology. We welcome your feedback in [issues](https://github.com/gateway-church/objetive-c-style-guide/issues) and [pull requests](https://github.com/gateway-church/objetive-c-style-guide/pulls).
 
-Thanks to all of [our contributors](https://github.com/NYTimes/objective-c-style-guide/contributors).
+This is based on the [NYTimes Objective-C Style Guide](https://github.com/NYTimes/objective-c-style-guide/) (with some modifications).
 
 ## Introduction
 
